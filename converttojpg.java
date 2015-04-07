@@ -56,26 +56,23 @@ public class converttojpg {
         String[] dirfiles = new String[readfiles.size()];
         return readfiles.toArray(dirfiles);
     }
-    public static void tojpg(String src, String dst) {
+    public static void tojpg(String src, String dst) throws IOException {
         BufferedImage bufferedImage;
         File delete;
-        try {
-            //read image file
-            bufferedImage = ImageIO.read(new File(src));
+
+        //read image file
+        bufferedImage = ImageIO.read(new File(src));
  
-            // create a blank, RGB, same width and height, and a white background
-            BufferedImage newBufferedImage = new BufferedImage(bufferedImage.getWidth(),
-                                                               bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
-            newBufferedImage.createGraphics().drawImage(bufferedImage, 0, 0, Color.WHITE, null);
+        // create a blank, RGB, same width and height, and a white background
+        BufferedImage newBufferedImage = new BufferedImage(bufferedImage.getWidth(),
+                                                           bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+        newBufferedImage.createGraphics().drawImage(bufferedImage, 0, 0, Color.WHITE, null);
  
-            // write to jpeg file and delete old file
-            delete = new File(src);
-            delete.delete();
-            System.out.println("Deleted " + delete);
-            ImageIO.write(newBufferedImage, "jpg", new File(dst));
-            System.out.println("Created " + dst + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // write to jpeg file and delete old file
+        delete = new File(src);
+        delete.delete();
+        System.out.println("Deleted " + delete);
+        ImageIO.write(newBufferedImage, "jpg", new File(dst));
+        System.out.println("Created " + dst + "\n");
     }
-}    
+}

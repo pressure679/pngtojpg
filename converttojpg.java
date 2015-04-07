@@ -34,7 +34,11 @@ public class converttojpg {
         try {
             for (String strings : files()) {
                 if (strings.substring(strings.length() - 3, strings.length()).equals("png") ||
-                    strings.substring(strings.length() - 3, strings.length()).equals("PNG")) {
+                    strings.substring(strings.length() - 3, strings.length()).equals("PNG") ||
+                    strings.substring(strings.length() - 3, strings.length()).equals("bmp") ||
+                    strings.substring(strings.length() - 3, strings.length()).equals("BMP") ||
+                    strings.substring(strings.length() - 3, strings.length()).equals("gif") ||
+                    strings.substring(strings.length() - 3, strings.length()).equals("GIF")) {
                     strbuff = new StringBuffer(strings);
                     strbuff.replace(strings.length() - 3, strings.length(), "jpg");
                     System.out.println("Converting " + strings);
